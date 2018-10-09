@@ -17,12 +17,10 @@ var writeFileAsync = Promise.promisify(fs.writeFile);
 
 
 var fetchProfileAndWriteToFile = function(readFilePath, writeFilePath) {
-  console.log(getGitHubProfileAsync);
-  console.log(writeFileAsync);
   // TODO
-  pluckFirstLineFromFileAsync(readFilePath)
+  return pluckFirstLineFromFileAsync(readFilePath)
     .then(getGitHubProfileAsync)
-    .then(profile => writeFileAsync(writeFilePath, profile));
+    .then(profile => writeFileAsync(writeFilePath, JSON.stringify(profile)));
   // .catch(console.log);
 };
 
